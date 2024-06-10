@@ -1,0 +1,145 @@
+<mvc:View controllerName="com.ibspl.employeemanagement.controller.Emp_Management_Master"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:UI ="sap.ui.table" xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}" titleAlignment="Center">
+        <content>
+
+		  <!-- <UI:TreeTable
+                    id="TreeTableBasic"
+                    rows="{path:'EmployeeEntries>/', parameters: {arrayNames:['node']}}"
+                    enableSelectAll="false"
+					selectionMode="None"
+                    ariaLabelledBy="title">
+                <UI:extension>
+                    
+                </UI:extension>
+                <UI:columns>
+                    <UI:Column width="13rem">
+                        <Label text="Employee Id"/>
+                        <UI:template>
+                            <Text text="{EmployeeEntries>EMPLOYEE_ID}" wrapping="false" />
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="9rem">
+                        <Label text="Employee Name"/>
+                        <UI:template>
+
+                           <Text text="{EmployeeEntries>EMPLOYEE_NAME}" wrapping="false" />
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Date"/>
+                        <UI:template>
+						<Text text="{path: 'EmployeeEntries>DATE', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>  
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Start Time"/>
+                        <UI:template>
+						<Text  text="{path: 'EmployeeEntries>START_TIME', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern: 'HH:mm:ss a' }}"/> 
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Break Time"/>
+                        <UI:template>
+						<Text  text="{path: 'EmployeeEntries>BREAK_TIME', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern: 'HH:mm:ss a' }}"/>
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="End Time"/>
+                        <UI:template>
+						<Text  text="{path: 'EmployeeEntries>END_TIME', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern: 'HH:mm:ss a' }}"/>
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Employee Remark"/>
+                        <UI:template>
+						<Text  text="{EmployeeEntries>EMPLOYEE_REMARK}"/>
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Project Name"/>
+                        <UI:template>
+						<Text  text="{EmployeeEntries>PROJECT_NAME}"/>
+                        </UI:template>
+                    </UI:Column>
+                    <UI:Column width="11rem">
+                        <Label text="Task Name"/>
+                        <UI:template>
+						<Text  text="{EmployeeEntries>TASK_NAME}"/>
+                        </UI:template>
+                    </UI:Column>
+                </UI:columns>
+            </UI:TreeTable> -->
+        	<Table id="idEmployeeEntry" inset="false" items="{path: 'EmployeeEntries>/results'}" sticky="ColumnHeaders,HeaderToolbar" class="sapUiContentPadding"
+						growing="true" growingThreshold="50" autoPopinMode="true">
+                        <headerToolbar>
+						<Toolbar>
+                        <Label text="{PropertyModel>/headerText}" design="Bold"/>
+						<SearchField placeholder="Search by Employee Id" visible="false">
+						<layoutData>
+						<l:GridData span="XL1 L2 M2 S10" />
+					</layoutData>
+						</SearchField>
+						<ToolbarSpacer/>
+                        <Button text="iVen Report" press="crossAppNavigation"/>
+                        <Button text="iVen Users" press="crossAppNavigationtoUsers"/>
+                        
+						<Button text="Create New Entry" type="Emphasized" press="onCreateNewEntry"> 
+						<layoutData>
+						<l:GridData span="XL1 L2 M2 S2" />
+					</layoutData>
+						</Button>
+						</Toolbar>
+
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Label text="Project Name" design="Bold"/>
+							</Column>
+							<Column >
+								<Label text="Task Name" design="Bold"/>
+							</Column>
+						
+							<Column>
+								<Label text="Date" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Start Time" design="Bold"/>
+							</Column>
+                            <Column>
+								<Label text="Break Time" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="End Time" design="Bold"/>
+							</Column>
+                            <Column>
+								<Label text="Remark" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Status" design="Bold"/>
+							</Column>
+				
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text= "{EmployeeEntries>PROJECT_TASK_MASTER_REF/results/0/PROJECT_NAME}"/>
+									<Text text= "{EmployeeEntries>PROJECT_TASK_MASTER_REF/results/0/TASK_NAME}" />
+                                    <Text text="{path: 'EmployeeEntries>DATE', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+                                    <!-- <Text  text="{path: 'EmployeeEntries>START_TIME', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern: 'HH:mm:ss a' }}"/> -->
+                                    <Text  text="{path: 'EmployeeEntries>START_TIME', type: 'sap.ui.model.odata.type.Time'}"/>
+                                    <Text  text="{path: 'EmployeeEntries>BREAK_TIME', type: 'sap.ui.model.odata.type.Time'}"/>
+                                    <!-- <Text text= "{path : 'EmployeeEntries>BREAK_TIME', formatter : '.formatter.TimeFormat'}" /> -->
+                                    <Text  text="{path: 'EmployeeEntries>END_TIME', type: 'sap.ui.model.odata.type.Time'}"/>
+                                    <Text text= "{EmployeeEntries>EMPLOYEE_REMARK}" />
+									<ObjectStatus text="{EmployeeEntries>STATUS_MASTER_REF/STATUS_DESCRIPTION}" inverted="true"
+										state="{path:'EmployeeEntries>STATUS', formatter:'.formatter.getStatus'}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					   
+        </content>
+    </Page>
+</mvc:View>

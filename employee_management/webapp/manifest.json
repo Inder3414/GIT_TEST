@@ -1,0 +1,176 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.ibspl.employeemanagement",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.13.1",
+      "toolsId": "fe8539e5-8512-4214-851e-d9f0c37cd9a1"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/EMPLOYEE_MANAGEMENT/XSODATA/ODATA_EMPLOYEE_MANAGEMENT.xsodata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Emp_Management-Display": {
+          "semanticObject": "Emp_Management",
+          "action": "Display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.122.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ibspl.employeemanagement.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.ibspl.employeemanagement.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "AppView",
+          "pattern": "",
+          "target": [
+            "TargetAppView"
+          ]
+        },
+        {
+          "name": "RouteEmp_Management_Master",
+          "pattern": "Master",
+          "target": [
+            "TargetEmp_Management_Master"
+          ]
+        },
+        {
+          "name": "RouteEmp_Management_NewEntry",
+          "pattern": "EntryCreation/{EMPLOYEE_ID}",
+          "target": [
+            "TargetEmp_Management_NewEntry"
+          ]
+        },
+        {
+          "name": "RouteNotFound",
+          "pattern": "NotFound",
+          "target": [
+            "TargetNotFound"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetAppView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "App"
+        },
+        "TargetEmp_Management_Master": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Emp_Management_Master"
+        },
+        "TargetEmp_Management_NewEntry": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Emp_Management_NewEntry"
+        },
+        "TargetNotFound": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.ibspl.employeemanagement.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "comibsplemployeemanagement"
+  }
+}

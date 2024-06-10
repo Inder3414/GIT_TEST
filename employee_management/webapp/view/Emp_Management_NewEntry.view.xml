@@ -1,0 +1,208 @@
+<mvc:View controllerName="com.ibspl.employeemanagement.controller.Emp_Management_NewEntry"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}" class="sapUiSizeCompact" titleAlignment="Center">
+        <content>
+<Toolbar >
+<!-- <Label text="{EmployeeDetails>/EMPLOYEE_CODE} - {EmployeeDetails>/EMPLOYEE_NAME}" design="Bold"></Label> -->
+<ToolbarSpacer ></ToolbarSpacer>
+<Button press= "onBack" icon="sap-icon://nav-back" tooltip= "Back"/>
+<Button press = "SampleCreate" text="Sample Create" visible="false"/>
+<!-- <Button press = "SampleCreateTask" text="Sample CreateTask"/> -->
+</Toolbar>
+
+
+<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+			<Label text="Project Name" design="Bold" required="true"/>
+					<ComboBox
+					id="Id_ProjectName"
+				items="{ProjectDetails>/}" change="onProjectSelection">
+				<core:Item key="{ProjectDetails>PROJECT_ID}" text="{ProjectDetails>PROJECT_NAME}" />
+			</ComboBox>
+				<Label text="Task Name" design="Bold"  required="true"/>
+					<ComboBox id="Id_TaskName"
+				items="{TaskDetails>/}">
+				<core:Item key="{TaskDetails>TASK_ID}" text="{TaskDetails>TASK_NAME}" />
+			</ComboBox>
+				<!-- <Label text="Employee ID / Name" design="Bold"/>
+				<Input id="name" value="{EmployeeDetails>/EMPLOYEE_CODE}" editable="false">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S3" />
+					</layoutData>
+				</Input>
+				<Input value="{EmployeeDetails>/EMPLOYEE_NAME}" editable="false"> 
+				<layoutData>
+						<l:GridData span="XL1 L4 M4 S7" />
+					</layoutData>
+				</Input> -->
+					
+				<!-- <Label text="Project ID / Name" design="Bold"/>
+				<Input value="{ZIPCode}">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Input /> -->
+				<Label text="Date / Start Time" design="Bold" required="true"/>
+				<DatePicker id="Id_TimeSheetDate" change="handleDateChange">
+				<layoutData>
+						<l:GridData span="XL1 L2 M2 S10" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker support2400 = "false" showCurrentTimeButton = "false" id="Id_StartTime">
+				<layoutData>
+						<l:GridData span="XL1 L3 M3 S10" />
+					</layoutData>
+				</TimePicker>
+				<!-- <MaskInput mask="99:99:99" placeholderSymbol="_" id="Id_StartTimeMask" liveChange="TimeFormatCheckLiv">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S3" />
+					</layoutData>
+				</MaskInput> -->
+				<!-- <SegmentedButton selectedKey="AM" id="Id_StartTimeSegBtn">
+					<items>
+						<SegmentedButtonItem text="AM" key="AM" />
+						<SegmentedButtonItem text="PM" key="AM"/>
+					</items>
+					<layoutData>
+						<l:GridData span="XL1 L5 M5 S8" />
+					</layoutData>
+				</SegmentedButton> -->
+				<Label text="Break Time / End Time" design="Bold" required="true"/>
+				<TimePicker support2400 = "false" showCurrentTimeButton = "false" id="Id_BreakTime">
+				<layoutData>
+						<l:GridData span="XL1 L2 M2 S10" />
+					</layoutData>
+				</TimePicker>
+				<!-- <MaskInput mask="99:99:99" placeholderSymbol="_" id="Id_BreakTimeMask" liveChange="TimeFormatCheck">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S3" />
+					</layoutData>
+				</MaskInput>
+				<SegmentedButton selectedKey="AM" id="Id_BreakTimeSegBtn">
+					<items>
+						<SegmentedButtonItem text="AM" key="AM" />
+						<SegmentedButtonItem text="PM" key="AM"/>
+					</items>
+					<layoutData>
+						<l:GridData span="XL1 L1 M1 S8" />
+					</layoutData>
+				</SegmentedButton> -->
+				<!-- <MaskInput mask="99:99:99" placeholderSymbol="_" id="Id_EndTimeMask">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S3" />
+					</layoutData>
+				</MaskInput>
+				<SegmentedButton selectedKey="AM" id="Id_EndTimeSegBtn">
+					<items>
+						<SegmentedButtonItem text="AM" key="AM" />
+						<SegmentedButtonItem text="PM" key="AM"/>
+					</items>
+					<layoutData>
+						<l:GridData span="XL1 L3 M3 S8" />
+					</layoutData>
+				</SegmentedButton> -->
+				<TimePicker support2400 = "false" showCurrentTimeButton = "false" id="Id_EndTime" >
+				<layoutData>
+						<l:GridData span="XL1 L3 M3 S10" />
+					</layoutData>
+				</TimePicker>
+				
+				<Label text="Remark" design="Bold"  required="true"/>
+				<TextArea id="Id_Remark" placeholder="Please enter a Remark" maxLength="100">
+				<layoutData>
+						<l:GridData span="XL1 L5 M5 S10" />
+					</layoutData>
+				</TextArea>
+				<Label text="Actions" design="Bold"  required="true" visible="false"/>
+				<Button text="Add Entry" press="AddTimeSheetDetails" type="Accept">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S5" />
+					</layoutData>
+				</Button>
+				<Button text="Cancel" press="onCancel" type="Reject">
+				<layoutData>
+						<l:GridData span="XL1 L1 M1 S5" />
+					</layoutData>
+				</Button>
+			</f:content>
+		</f:SimpleForm>
+        
+        	<Table id="idEmployeeEntry" inset="false" items="{path: 'TimeSheetEntries>/'}" sticky="ColumnHeaders,HeaderToolbar" class="sapUiContentPadding"
+						growing="true" growingThreshold="50" autoPopinMode="true" headerText="TimeSheet Entries">
+                      
+						<columns>
+							<Column>
+								<Label text="Project Name" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Task Name" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Date" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Start Time" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Break Time" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="End Time" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Remark" design="Bold"/>
+							</Column>
+							<Column>
+								<Label text="Action" design="Bold"/>
+							</Column>
+							
+							
+				
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text= "{TimeSheetEntries>PROJECT_NAME}" />
+									<Text text= "{TimeSheetEntries>TASK_NAME}" />
+                                    <Text id="rgaiDate" text="{path: 'TimeSheetEntries>DATE', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+									<Text text= "{TimeSheetEntries>START_TIME}" />
+									<Text text= "{TimeSheetEntries>END_TIME}" />
+									<Text text= "{TimeSheetEntries>BREAK_TIME}" />
+									<Text text= "{TimeSheetEntries>EMPLOYEE_REMARK}" />
+									<Button icon="sap-icon://delete" tooltip="Delete" press="onDelete"></Button>
+		
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					
+        </content>
+		<footer>
+		<Toolbar >
+
+<ToolbarSpacer ></ToolbarSpacer>
+<Button press= "onSubmit" text="Submit" visible = "{PropertyModel>/SubmitBtn}" type="Accept"/>
+</Toolbar>
+
+	</footer>
+    </Page>
+	
+</mvc:View>

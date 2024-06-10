@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+ 	<ResponsivePopover id="myPopover" title="Project Details" contentWidth="13rem" titleAlignment="Center">
+	<endButton>
+			<Button text="Close" press="onClose"/>
+		</endButton>
+   	<f:SimpleForm>
+			<f:content>
+				
+			
+			<Label text="Project Name" showColon="true" class="sapUiTinyMarginEnd" design="Bold"/>
+			<Text text="{ProjectDetails>/PROJECT_NAME}" class="sapUiTinyMarginBottom"/>
+
+			<Label text="Task Name" showColon="true" class="sapUiTinyMarginEnd" design="Bold"/>
+			<Text text="{ProjectDetails>/TASK_NAME}" class="sapUiTinyMarginBottom"/>
+
+			<Label text="Employee Remark" showColon="true" class="sapUiTinyMarginEnd" design="Bold"/>
+			<Text text="{ProjectDetails>/EMPLOYEE_REMARK}" class="sapUiTinyMarginBottom"/>
+		
+			</f:content>
+			</f:SimpleForm>
+			
+   </ResponsivePopover>
+
+</core:FragmentDefinition>

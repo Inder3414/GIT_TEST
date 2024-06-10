@@ -1,0 +1,8 @@
+<mvc:View controllerName="com.ibspl.employeemanagement.controller.Emp_Management_Master"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:UI ="sap.ui.table" xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        </content>
+    </Page>
+</mvc:View>
