@@ -423,8 +423,7 @@ sap.ui.define([
             },
 
             NewTest: function(){
-                
+                var changesFlag = 'True'
             }
-
         });
     });
